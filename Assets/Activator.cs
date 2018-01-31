@@ -16,23 +16,23 @@ public class Activator : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-		if (Input.GetKeyDown (key) && active)
+		if (active && Input.GetKeyDown (key))
 		{
-			Destroy (note);
+			DestroyObject(note);
 		} 
 	}
 
-	void onTriggerEnter2D(Collider2D col)
+	void OnTriggerEnter2D(Collider2D col)
 	{
 		active = true;
+			
 		if (col.gameObject.tag == "Note")
 		{
 			note = col.gameObject;
-			Debug.Log ("test");
 		}
 	}
 
-	void onTriggerEnter2D ()
+	void OnTriggerExit2D( Collider2D col)
 	{
 		active=false;
 	}
