@@ -8,6 +8,7 @@ public class Activator : MonoBehaviour {
 	public KeyCode key;
 	bool active = false;
 	GameObject note;
+	Color old;
 
 	void Awake(){
 		sr = GetComponent<SpriteRenderer>();
@@ -15,13 +16,16 @@ public class Activator : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		old = sr.color;
 	}
 	
-	// Update is called once per frame
+	// Update is called once per framerome
 	void Update ()
 	{
-		if (active && Input.GetKeyDown (key))
+		if(Input.GetKeyDown(key)){
+			StartCoroutine(Pressed());
+		}
+		if (active && Input.GetKeyDown(key))
 		{
 			DestroyObject(note);
 		} 
@@ -41,5 +45,11 @@ public class Activator : MonoBehaviour {
 	{
 		active=false;
 	}
-	 
+
+	IEnumerator Pressed(){
+		sr.color = new Color(0,0,0);
+		yield return new WaitForSeconds(0.1f);
+		sr.color = old;
+	}
+	
 }
