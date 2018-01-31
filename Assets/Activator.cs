@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class Activator : MonoBehaviour {
 
+	SpriteRenderer sr;
 	public KeyCode key;
 	bool active = false;
 	GameObject note;
+
+	void Awake(){
+		sr = GetComponent<SpriteRenderer>();
+	}
 
 	// Use this for initialization
 	void Start () {
