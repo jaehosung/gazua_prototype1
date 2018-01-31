@@ -28,6 +28,7 @@ public class Activator : MonoBehaviour {
 		if (active && Input.GetKeyDown(key))
 		{
 			DestroyObject(note);
+			AddScore();
 		} 
 	}
 
@@ -44,6 +45,10 @@ public class Activator : MonoBehaviour {
 	void OnTriggerExit2D( Collider2D col)
 	{
 		active=false;
+	}
+	
+	void AddScore(){
+		PlayerPrefs.SetInt("Score",PlayerPrefs.GetInt("Score")+100);
 	}
 
 	IEnumerator Pressed(){

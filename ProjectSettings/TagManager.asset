@@ -39,9 +39,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Note
-    uniqueID: 500592539
-    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Activator
+    uniqueID: 712370163
+    locked: 0
+  - name: Note
+    uniqueID: 500592539
     locked: 0
