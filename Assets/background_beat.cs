@@ -9,7 +9,7 @@ public class background_beat : MonoBehaviour {
 	public AudioSource beatsound;
 
 	float bpm = 168;
-	int clapperbeat = 4;
+	int clapperbeat = 1;
 
 	float bgtime;
 	int bgbeat;
@@ -38,6 +38,7 @@ public class background_beat : MonoBehaviour {
     }
 	void action_beat(){
 		GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+		cube.AddComponent<Rigidbody>();
 		cube.transform.position = new Vector3(0, 0, 0);
 		cube.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
 	}
