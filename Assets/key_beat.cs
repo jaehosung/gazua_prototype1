@@ -14,12 +14,20 @@ public class key_beat : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKeyDown(key)){
-			somesound.Play();
+	}
+	
+
+	void crateBeatInput(int beats){
+		Vector2 velocity = new Vector2(0.0f,-0.4f);
+		Vector3 size = new Vector3(0.3f,0.3f,0.3f);
+		for(int i = 0; i < beats; i++){
 			GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
 			cube.AddComponent<Rigidbody>();
-			cube.transform.position = new Vector3(3, 0, 0);
-			cube.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+			cube.transform.position = new Vector2(i, -3);
+			cube.transform.localScale = size;
+			cube.GetComponent<Rigidbody>().velocity = velocity;
+			cube.GetComponent<Renderer>().material.color = Color.yellow;
+			cube.GetComponent<BoxCollider>().enabled = false;
 		}
 	}
 }

@@ -179,6 +179,7 @@
 -define:UNITY_EDITOR_OSX
 -define:ENABLE_NATIVE_ARRAY_CHECKS
 -define:UNITY_TEAM_LICENSE
+'Assets/background_beat.cs'
 'Assets/key_beat.cs'
 'Assets/Tutorial/scripts/Activator.cs'
 'Assets/Tutorial/scripts/Note.cs'
