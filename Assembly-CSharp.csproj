@@ -51,11 +51,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\background_beat.cs" />
-     <Compile Include="Assets\key_beat.cs" />
-     <Compile Include="Assets\Tutorial\scripts\Activator.cs" />
-     <Compile Include="Assets\Tutorial\scripts\Note.cs" />
-     <Compile Include="Assets\Tutorial\scripts\PPTest.cs" />
+     <Compile Include="Assets\bgManager.cs" />
+     <Compile Include="Assets\GameManager.cs" />
+     <Compile Include="Assets\Prev\background_beat.cs" />
+     <Compile Include="Assets\Prev\key_beat.cs" />
+     <Compile Include="Assets\Prev\Tutorial\scripts\Activator.cs" />
+     <Compile Include="Assets\Prev\Tutorial\scripts\Note.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

@@ -236,35 +236,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   somesound: {fileID: 481989650}
   key: 97
---- !u!1 &826569382
+--- !u!1 &874082045
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 826569384}
-  - component: {fileID: 826569383}
+  - component: {fileID: 874082047}
+  - component: {fileID: 874082046}
   m_Layer: 0
-  m_Name: Spotlight (1)
+  m_Name: Spotlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!108 &826569383
+--- !u!108 &874082046
 Light:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 826569382}
+  m_GameObject: {fileID: 874082045}
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 20
+  m_Intensity: 100
   m_Range: 10
-  m_SpotAngle: 96
+  m_SpotAngle: 92
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -288,14 +288,14 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!4 &826569384
+--- !u!4 &874082047
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 826569382}
+  m_GameObject: {fileID: 874082045}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.1851478, y: -2.43, z: -8.4}
+  m_LocalPosition: {x: 2.1851478, y: -2.43, z: -6.18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -424,6 +424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgsound: {fileID: 1236126621}
   beatsound: {fileID: 481989650}
+  key: 0
 --- !u!1 &1300756497
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,7 +500,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1300756497}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.7, y: -5, z: -10}
+  m_LocalPosition: {x: 1.7, y: -3.1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -643,6 +644,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgsound: {fileID: 1505975521}
   beatsound: {fileID: 481989650}
+  key: 98
 --- !u!4 &1937219990
 Transform:
   m_ObjectHideFlags: 0
