@@ -22,6 +22,8 @@ public class bgManager : MonoBehaviour {
 
 	//judgement Max : 0.5 / Min : 0.1
 	private float judgement = 0.49f;
+
+	private bool firstNodeFlag = false;
 	
 	public GameObject blueTile;
 	public GameObject blackTile;
@@ -49,8 +51,12 @@ public class bgManager : MonoBehaviour {
 	void Update ()
 	{
 		if(barEnd()){
-			foreach (GameObject obj in beatIndicators){
-				obj.SetActive(false);
+			for(int i = 0; i < 8; i ++){
+				if(i==0&&firstNodeFlag!=false){
+					firstNodeFlag = false;
+				}else{
+					beatIndicators[i].SetActive(false);
+				}
 			}
 		}
 		MusicStart();
@@ -65,6 +71,10 @@ public class bgManager : MonoBehaviour {
 		float inputBeat = bgBeat*2;
 		if(Mathf.Abs(inputBeat - Mathf.Round(inputBeat))<judgement){
 			int beat = (int)Mathf.Round(inputBeat)%8;
+			//Fix Bug Removing the first node
+			if(beat == 0){
+				firstNodeFlag = true;
+			}
 			beatIndicators[beat].SetActive(true);
 		}
 	}
