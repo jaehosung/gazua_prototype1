@@ -29,8 +29,10 @@ public class bgManager : MonoBehaviour {
 	public GameObject blackTile;
 	public GameObject indicator;
 	private GameObject[] beatIndicators = new GameObject[8];
+	private GameObject[] movingIndicator = new GameObject[3];
 	// Use this for initialization
 	void Awake(){
+		bps = bpm / 60;
 		for(int i = 0; i<8; i++){
 			beatIndicators[i] = Instantiate(blueTile, new Vector3(0,0), Quaternion.identity);
 			if(i%2 == 0){
@@ -40,11 +42,12 @@ public class bgManager : MonoBehaviour {
 			}
 			beatIndicators[i].SetActive(false);
 		}
-		Instantiate(indicator);
+		movingIndicator[0] = Instantiate(indicator, new Vector3(0.2f,0), Quaternion.identity);
+		movingIndicator[1] = Instantiate(indicator, new Vector3(0.2f+0.9f*4f,0), Quaternion.identity);
+		movingIndicator[2] = Instantiate(indicator, new Vector3(0.2f+0.9f*8f,0), Quaternion.identity);
 	}
 	void Start ()
 	{
-		bps = bpm / 60;
 	}
 	
 	// Update is called once per frame
@@ -58,6 +61,8 @@ public class bgManager : MonoBehaviour {
 					beatIndicators[i].SetActive(false);
 				}
 			}
+			movingIndicator[(int)bgBar%3].transform.position = new Vector2(0.2f - 0.9f*4f,0);
+			indicatorMove();
 		}
 		MusicStart();
 
@@ -80,7 +85,9 @@ public class bgManager : MonoBehaviour {
 	}
 
 	void indicatorMove(){
-		indicator.GetComponent<Rigidbody2D>().velocity = new Vector2(1,0);
+		movingIndicator[0].GetComponent<Rigidbody2D>().velocity = new Vector2(0.9f*(float)bps,0);
+		movingIndicator[1].GetComponent<Rigidbody2D>().velocity = new Vector2(0.9f*(float)bps,0);
+		movingIndicator[2].GetComponent<Rigidbody2D>().velocity = new Vector2(0.9f*(float)bps,0);
 	}
 	void MusicStart()
 	{
