@@ -59,7 +59,8 @@ public class bgManager : MonoBehaviour {
 	void Awake () {
 		bps = bpm / 60;
 		beatIndicatorsInit();
-		movingIndicatorInit();
+		//movingIndicatorInit();
+		movingIndicatorInitDiscrete();
 		downBoolArrayInit();
 		DownBeatMaking ();
 
@@ -75,6 +76,7 @@ public class bgManager : MonoBehaviour {
 	void Update () {
 		MusicStart ();
 		DownBeatRenderer ();
+		movingIndicatorInitDiscreteUpdate();
 
 		//DownBeatTailRemoving();
 
@@ -92,7 +94,7 @@ public class bgManager : MonoBehaviour {
 			}
 
 			//Beat Generating or Beat Moving
-			IndicatorMove ();
+			//IndicatorMove ();
 		}
 
 		if (Input.GetKeyDown (KeyCode.Space) || Input.GetKeyDown (keyA) || Input.GetKeyDown (keyB)) {
@@ -258,6 +260,7 @@ public class bgManager : MonoBehaviour {
 	}
 	/* ===== Awake Functions ===== */
 	
+
 	void beatIndicatorsInit(){
 		for (int i = 0; i < 8; i++) {
 			beatIndicators[i] = Instantiate (blueTile, new Vector3 (0, 0), Quaternion.identity);
@@ -269,7 +272,21 @@ public class bgManager : MonoBehaviour {
 			beatIndicators[i].SetActive (false);
 		}
 	}
+	public GameObject movingDiscreteIndicator;
 
+	void movingIndicatorInitDiscrete(){
+		movingDiscreteIndicator = Instantiate (indicator, new Vector3 (0.2f - 0.9f * 4f, 2.8f), Quaternion.identity);
+	}
+	void movingIndicatorInitDiscreteUpdate(){
+		float inputBeat = bgBeat * 2;
+		int beat = ((int) Mathf.Round (inputBeat)) % 8;
+		int i = beat;
+		if (i % 2 == 0) {
+			movingDiscreteIndicator.transform.position = new Vector2 (0.2f + 0.9f * i / 2f,0.4f );
+		} else {
+			movingDiscreteIndicator.transform.position = new Vector2 (0.6f + 0.9f * (i - 1) / 2f, 0.4f);
+		}
+	}
 
 	void movingIndicatorInit(){
 		movingIndicator[0] = Instantiate (indicator, new Vector3 (0.2f - 0.9f * 4f, 2.8f), Quaternion.identity);
