@@ -48,3 +48,6 @@ TagManager:
   - name: Note
     uniqueID: 500592539
     locked: 0
+  - name: New Layer
+    uniqueID: 3407607255
+    locked: 0
