@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212859129585610340}
   - component: {fileID: 50374973270794806}
   m_Layer: 0
-  m_Name: indicator_bigLine_ne
+  m_Name: indicator_bigLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,8 +92,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 712370163
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 94000c9a7819744029021f27b0466076, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

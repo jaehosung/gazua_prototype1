@@ -38,6 +38,10 @@ public class bgManager : MonoBehaviour {
 	private GameObject[, ] downBeatArray = new GameObject[8, 14];
 	private GameObject[, ] downBeatArrayBlack = new GameObject[8, 14];
 	private List<int>[] downBoolArray = new List<int>[8];
+	//# of layers the beat can get
+	private int generatingSpeed = 1;
+	//level
+	private int level = 1;
 
 	// Use this for initialization
 	private bool[] beatChecker = new bool[8];
@@ -49,6 +53,10 @@ public class bgManager : MonoBehaviour {
 		downBoolArrayInit();
 		DownBeatMaking ();
 
+		for(int i = 0 ; i<5; i++){
+			DownArrayGenerating(1);
+		}
+
 	}
 	void Start () { }
 
@@ -56,25 +64,33 @@ public class bgManager : MonoBehaviour {
 	void Update () {
 		MusicStart ();
 
+		DownBeatTailRemoving();
+
 		if (Input.GetKeyDown (KeyCode.Space) || Input.GetKeyDown (keyA) || Input.GetKeyDown (keyB)) {
 			beatSound.Stop ();
 			beatSound.Play ();
 			CorrectBeatMaker (sessionPerBeat);
-			//CorrectBeatMakerNew (sessionPerBeat);
+		}
+		if(BarEndNum(generatingSpeed)){
+			DownArrayGenerating(level);
 		}
 		if (BarEnd ()) {
-			DownArrayGenerating (1);
-
 			//Beat Generating or Beat Moving
 			IndicatorMove ();
-
-			beatIndicatorRenderer();
 		}
-		DownBeatUpdate ();
+		beatIndicatorRenderer();
+		DownBeatRenderer ();
 	}
 
 
 	/*========== Functions ========== */
+	void DownBeatTailRemoving(){
+		for(int i = 0; i <8; i++){
+			while(downBoolArray[i].Count!=0 && downBoolArray[i][downBoolArray[i].Count-1]==0){
+				downBoolArray[i].RemoveAt(downBoolArray[i].Count-1);
+			}
+		}
+	}
 	void beatIndicatorRenderer(){
 		for (int i = 0; i < 8; i++) {
 			beatIndicators[i].SetActive (false);
@@ -92,7 +108,7 @@ public class bgManager : MonoBehaviour {
 
 
 	private int[,] sampleBeatArray = new int[, ] { { 1, 0, 0, 0, 0, 0, 0, 0 }, { 1, 0, 1, 0, 0, 0, 0, 0 }, { 1, 0, 0, 0, 1, 0, 0, 0 }, { 1, 0, 1, 0, 1, 0, 0, 0 }, { 1, 0, 1, 0, 1, 0, 1, 0 }, { 1, 1, 1, 1, 1, 1, 1, 1 }, { 1, 1, 1, 0, 1, 0, 1, 0 }, { 1, 1, 1, 0, 1, 0, 0, 0 }, { 1, 1, 1, 0, 1, 1, 1, 0 }, { 1, 1, 1, 0, 1, 1, 0, 0 }, { 0, 1, 0, 1, 0, 1, 0, 1 } };
-	void DownBeatUpdate () {
+	void DownBeatRenderer () {
 		int[] temp = new int[15];
 		for (int i = 0; i < 8; i++) {
 			//downBoolArray[i].CopyTo(temp,0);
@@ -101,9 +117,9 @@ public class bgManager : MonoBehaviour {
 				if (downBoolArray[i][j] == 1) {
 					downBeatArray[i, j].SetActive (true);
 					downBeatArrayBlack[i, j].SetActive (false);
-				} else {
+				} else if(downBoolArray[i][j]==0){
 					downBeatArray[i, j].SetActive (false);
-					downBeatArrayBlack[i, j].SetActive (true);
+					downBeatArrayBlack[i, j].SetActive (false);
 				}
 			}
 		}
@@ -138,10 +154,15 @@ public class bgManager : MonoBehaviour {
 			}
 		}
 	}
+	/* ===== BEAT CHECKER ===== */
 	void CorrectBeatMaker (int inputPerBeat) {
 		float inputBeat = bgBeat * 2;
 		if (Mathf.Abs (inputBeat - Mathf.Round (inputBeat)) < judgement) {
 			int beat = (int) Mathf.Round (inputBeat) % 8;
+			/* Beat Breaker */
+			int length = downBoolArray[beat].Count;
+			if(length>0)
+				downBoolArray[beat][length-1] = 0;
 			if (beat == 0 && inputBeat < Mathf.Round (inputBeat)) {
 				lastBeatCheckFlag = true;
 			} else {
@@ -213,10 +234,19 @@ public class bgManager : MonoBehaviour {
 	}
 	private float barBeat = 0;
 	private int prevBeat = -1;
+	private int prevBeatNum = -1;
 	bool BarEnd () {
 		if ((int) bgBar != prevBeat) {
 			prevBeat = (int) bgBar;
 			return true;
+		}
+		return false;
+	}
+	bool BarEndNum (int numberBars) {
+		if ((int) bgBar != prevBeatNum) {
+			prevBeatNum = (int) bgBar;
+			if((int)bgBar%numberBars ==0)
+				return true;
 		}
 		return false;
 	}
