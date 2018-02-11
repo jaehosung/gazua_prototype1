@@ -167,10 +167,21 @@ public class bgManager : MonoBehaviour {
 			}
 		}
 	}
-	private int[,] sampleBeatArray = new int[, ] { { 1, 0, 0, 0, 0, 0, 0, 0 }, { 1, 0, 1, 0, 0, 0, 0, 0 }, { 1, 0, 0, 0, 1, 0, 0, 0 }, { 1, 0, 1, 0, 1, 0, 0, 0 }, { 1, 0, 1, 0, 1, 0, 1, 0 }, { 1, 1, 1, 1, 1, 1, 1, 1 }, { 1, 1, 1, 0, 1, 0, 1, 0 }, { 1, 1, 1, 0, 1, 0, 0, 0 }, { 1, 1, 1, 0, 1, 1, 1, 0 }, { 1, 1, 1, 0, 1, 1, 0, 0 }, { 0, 1, 0, 1, 0, 1, 0, 1 } };
+	private int[,] sampleBeatArray = new int[, ] { 
+		{ 1, 0, 0, 0, 0, 0, 0, 0 }, 
+		{ 1, 0, 1, 0, 0, 0, 0, 0 }, 
+		{ 1, 0, 0, 0, 1, 0, 0, 0 }, 
+		{ 1, 0, 1, 0, 1, 0, 0, 0 }, 
+		{ 1, 0, 1, 0, 1, 0, 1, 0 }, 
+		//{ 1, 1, 1, 1, 1, 1, 1, 1 }, 
+		{ 1, 1, 1, 0, 1, 0, 1, 0 }, 
+		{ 1, 1, 1, 0, 1, 0, 0, 0 }, 
+		{ 1, 1, 1, 0, 1, 1, 1, 0 }, 
+		{ 1, 1, 1, 0, 1, 1, 0, 0 }, 
+		{ 0, 1, 0, 1, 0, 1, 0, 1 } };
 	void DownArrayGenerating (int level) {
 		//TODO_Add code for level
-		int index = (int) Random.Range (0f, 6f);
+		int index = (int) Random.Range (0f, 10f);
 		for (int i = 0; i < 8; i++) {
 			int _temp = (sampleBeatArray[index,i])%2;
 			downBoolArray[i].Insert(0,_temp);
